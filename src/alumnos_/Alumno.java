@@ -8,7 +8,7 @@ package alumnos_;
  *
  * @author Memoeslink
  */
-public class Alumno extends Persona{
+public class Alumno extends Persona implements Bean{
     String carrera;
     private int matricula;
     private  Carrera llamadaCarrera;
@@ -43,15 +43,17 @@ public class Alumno extends Persona{
         matricula = 0;
     }
     
-    public Alumno(int matricula, String nombre, String ape_pat, String ape_mat, String fecha_nac, long tel, String dir)
+    public Alumno(int matricula, String nombre, String ape_pat, String ape_mat, String fecha_nac, long tel, String dir, String clave, String nombreCarrera)
     {
-        llamadaCarrera = new Carrera(0, "");
+        llamadaCarrera = new Carrera("", "");
         this.matricula = matricula;
         setNombre(nombre);
         setApe_pat(ape_pat);
         setApe_mat(ape_mat);
         setTelefono(telefono);
         setDir(dir);
+        llamadaCarrera.setClave(clave);
+        llamadaCarrera.setNombre(nombreCarrera);
     }
 
     /**

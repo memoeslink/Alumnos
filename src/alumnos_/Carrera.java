@@ -8,27 +8,32 @@ package alumnos_;
  *
  * @author Memoeslink
  */
-public class Carrera {
-    private int clave;
+public class Carrera implements Bean{
+    private String clave;
     private String nombre;
     
-    public Carrera(int clave, String nombre)
+    public Carrera(String clave, String nombre)
     {
         this.clave = clave;
         this.nombre = nombre;
+    }
+
+    public Carrera() {
+        this.clave = "";
+        this.nombre = "";
     }
     
     /**
      * @return the clave
      */
-    public int getClave() {
+    public String getClave() {
         return clave;
     }
 
     /**
      * @param clave the clave to set
      */
-    public void setClave(int clave) {
+    public void setClave(String clave) {
         this.clave = clave;
     }
 
