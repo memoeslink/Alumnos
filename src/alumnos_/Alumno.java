@@ -9,9 +9,9 @@ package alumnos_;
  * @author Memoeslink
  */
 public class Alumno extends Persona implements Bean{
-    String carrera;
     private int matricula;
-    private  Carrera llamadaCarrera;
+    //private  Carrera llamadaCarrera;
+    private String clave;
 
     /**
      * @return the matricula
@@ -27,39 +27,43 @@ public class Alumno extends Persona implements Bean{
         this.matricula = matricula;
     }
     
-    public String getCarrera()
-    {
-        return carrera;
-    }
-    
-    public void setCarrera(String carrera)
-    {
-        this.carrera = carrera;
-    }
-    
     public Alumno()
     {
-        carrera = "";
-        matricula = 0;
+        this.matricula = 0;
+        this.nombre = "";
+        this.ape_pat = "";
+        this.ape_mat = "";
+        this.telefono = "";
+        this.fecha_nac = "";
+        this.dir = "";
+        this.clave = "";
     }
     
-    public Alumno(int matricula, String nombre, String ape_pat, String ape_mat, String fecha_nac, long tel, String dir, String clave, String nombreCarrera)
+    public Alumno(int matricula, String nombre, String ape_pat, String ape_mat, String tel, String fecha_nac, String dir, String clave)
     {
-        llamadaCarrera = new Carrera("", "");
+        //llamadaCarrera = new Carrera("", "");
         this.matricula = matricula;
         setNombre(nombre);
         setApe_pat(ape_pat);
         setApe_mat(ape_mat);
-        setTelefono(telefono);
-        setDir(dir);
-        llamadaCarrera.setClave(clave);
-        llamadaCarrera.setNombre(nombreCarrera);
+        this.telefono = tel;
+        this.fecha_nac = fecha_nac;
+        this.dir = dir;
+        this.clave = clave;
+        //llamadaCarrera.setClave(clave);
     }
 
     /**
-     * @return the llamadaCarrera
+     * @return the clave
      */
-    public Carrera getLlamadaCarrera() {
-        return llamadaCarrera;
+    public String getClave() {
+        return clave;
+    }
+
+    /**
+     * @param clave the clave to set
+     */
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 }

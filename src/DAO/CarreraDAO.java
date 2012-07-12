@@ -4,12 +4,16 @@
  */
 package DAO;
 
+import alumnos_.Alumno;
 import alumnos_.Bean;
 import alumnos_.Carrera;
+import com.mysql.jdbc.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,7 +25,27 @@ public class CarreraDAO implements OperacionesDAO{
 
     @Override
     public ArrayList select() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String a = "";
+        Scanner scantool = new Scanner(System.in);
+        System.out.println("Clave de carrera: ");
+        a = scantool.nextLine();
+        ArrayList mi_lista = new ArrayList();
+        Carrera carreraCall = new Carrera();
+        Connection conexion = DAOFactory.getConexion();
+
+        try {
+            Statement llamada = (Statement) conexion.createStatement();
+            ResultSet query = llamada.executeQuery(SQL.findCarrera.concat(a + "'"));
+            while(query.next())
+            {
+                System.err.println("Carrera: " + query.getString("Carrera"));
+                mi_lista.add(new Carrera(query.getString("Clave"), query.getString("Carrera")));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            
+        }
+        return mi_lista;
     }
 
     @Override
@@ -30,10 +54,10 @@ public class CarreraDAO implements OperacionesDAO{
         Connection conexion = DAOFactory.getConexion();
         PreparedStatement ps = null;
         try {
-            ps = conexion.prepareStatement(SQL.insertarCarrera);
+            ps = (PreparedStatement) conexion.prepareCall(SQL.insertarCarrera);
             ps.setString(1, carrera.getClave());
             ps.setString(2, carrera.getNombre());
-            ps.executeQuery();
+            ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(CarreraDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

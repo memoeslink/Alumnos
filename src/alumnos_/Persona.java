@@ -10,15 +10,15 @@ package alumnos_;
  */
 public class Persona {
     String nombre, ape_pat, ape_mat, fecha_nac;
-    long telefono;
+    String telefono;
     String dir;
     
-    public long getTelefono()
+    public String getTelefono()
     {
         return telefono;
     }
     
-    public void setTelefono(long telefono)
+    public void setTelefono(String telefono)
     {
         this.telefono = telefono;
     }
@@ -73,7 +73,7 @@ public class Persona {
         this.fecha_nac = fecha_nac;
     }
     
-    public Persona(String nombre, String ape_pat, String ape_mat, String fecha_nac, long telefono, String dir)
+    public Persona(String nombre, String ape_pat, String ape_mat, String fecha_nac, String telefono, String dir)
     {
         this.nombre = nombre;
         this.ape_pat = ape_pat;
@@ -89,7 +89,7 @@ public class Persona {
         this.ape_pat = "";
         this.ape_mat = "";
         this.fecha_nac = "";
-        this.telefono = 0;
+        this.telefono = "";
         this.dir = "";
     }
 }
